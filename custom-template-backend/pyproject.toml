@@ -1,0 +1,12 @@
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+fix = true
+include = ["./**/*.py"]
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = ["D203", "D213", "ANN101", "D104"]
+
+[tool.ruff.format]
+quote-style = "double"

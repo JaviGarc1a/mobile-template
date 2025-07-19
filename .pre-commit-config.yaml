@@ -1,0 +1,28 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.12.2
+    hooks:
+      - id: ruff-check
+        args: [--fix]
+        files: ^custom-template-backend/.*\.py$
+        exclude: custom-template-backend/.*migrations/
+      - id: ruff
+        args: [--select, I, --fix]
+        files: ^custom-template-backend/.*\.py$
+        exclude: custom-template-backend/.*migrations/
+      - id: ruff-format
+        files: ^custom-template-backend/.*\.py$
+        exclude: custom-template-backend/.*migrations/
+
+  - repo: local
+    hooks:
+      - id: frontend-pretty
+        name: Frontend Pretty
+        entry: bash -c 'cd custom-template-frontend && npm run pretty'
+        language: system
+        types_or: [tsx, ts]
+      - id: frontend-check
+        name: Frontend Check
+        entry: bash -c 'cd custom-template-frontend && npm run check'
+        language: system
+        types_or: [tsx, ts]
